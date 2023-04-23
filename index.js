@@ -1,2 +1,4 @@
-require("./superma.js");
-require("./batman.js");
+a = 2+3
+console.log(a)
+b = 5-4
+console.log(a+b)
