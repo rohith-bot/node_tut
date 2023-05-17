@@ -1,2 +1,1 @@
-require("./superma.js");
-require("./batman.js");
+console.log("hello world")
