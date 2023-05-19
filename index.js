@@ -1,5 +1,5 @@
-import { superman } from "./superman.js";
+import { superman as sup } from "./superman.js";
 import { batman } from "./batman.js";
 
-superman();
+sup();
 batman();
