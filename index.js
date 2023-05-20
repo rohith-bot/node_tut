@@ -1,10 +1,14 @@
 const fs = require("node:fs")
+const zlib = require("node:zlib")
 
-const read = fs.createReadStream("./greet.txt")
+const gzip = zlib.createGzip()
 
-const write = fs.createWriteStream("./greetAsync.txt")
-
-read.on("data",(chunk)=>{
-    console.log(chunk)
-    write.write(chunk)
+const readStream = fs.createReadStream("greet.txt",{
+    encoding:"utf-8",
+    highWaterMark:2,
 })
+
+const writeStream = fs.createWriteStream("greetAsync1.txt.gz")
+
+
+readStream.pipe(gzip).pipe(writeStream); //we are chaining readstream with transform stream and then again with write steram
