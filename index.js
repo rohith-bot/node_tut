@@ -1,44 +1,10 @@
-const fs = require("node:fs/promises")
+const fs = require("node:fs")
 
-async function read(){
-    const data = await fs.readFile("greet.txt")
-    console.log(data)
-}
+const read = fs.createReadStream("./greet.txt")
 
+const write = fs.createWriteStream("./greetAsync.txt")
 
-read()
-
-
-// fs.readFile("greet.txt","utf-8")
-// .then(data =>{
-//     console.log(data)
-// }).catch(err => {
-//     console.log(err)
-// })
-
-
-
-
-
-
-
-
-
-
-// // // const data = fs.readFileSync("./textFiletxt")//this is synchronous
-
-// // // console.log(data.toString())
-
-// // fs.readFile("./textFiletxt",(err,data1) =>{
-// //     console.log(data1)
-// // })
-
-// fs.writeFileSync("./greet.txt","hello\nhi");
-
-// fs.writeFile("./greet.txt","Heloo I am Async",{flag:"a"} ,(err,data)=>{
-//     if(err){
-//         console.log(err)
-//     }else{
-//         console.log("data written")
-//     }
-// })
+read.on("data",(chunk)=>{
+    console.log(chunk)
+    write.write(chunk)
+})
