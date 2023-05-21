@@ -1,14 +1,11 @@
-const fs = require("node:fs")
-const zlib = require("node:zlib")
+const http = require("node:http")
 
-const gzip = zlib.createGzip()
-
-const readStream = fs.createReadStream("greet.txt",{
-    encoding:"utf-8",
-    highWaterMark:2,
+const server = http.createServer((req,res)=>{
+    
+    res.writeHead(200,{"Content-Type":"text/html"})
+    res.end("<h1>Hello World</h1>");
 })
 
-const writeStream = fs.createWriteStream("greetAsync1.txt.gz")
-
-
-readStream.pipe(gzip).pipe(writeStream); //we are chaining readstream with transform stream and then again with write steram
+server.listen(5000,()=>{
+    console.log("Server running on port 5000")
+})
