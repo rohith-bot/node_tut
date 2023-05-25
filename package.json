@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/rohith-bot/node_tut#readme",
   "dependencies": {
-    "lorem": "^0.4.0"
+    "lorem": "^0.4.0",
+    "ross1": "^1.0.0"
   }
 }
